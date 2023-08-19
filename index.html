@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agarwal Music Player</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="utility.css">
+</head>
+<body>
+    
+    <nav class="flex a-center varela">
+        <i class="fa-solid fa-music logo"></i>
+        <h3>Agarwals' Music Player</h3>
+        <a href="#" class="navItem">
+            <p class="navItem">Top Artists</p>
+        </a>
+        <a href="#" class="navItem pop">
+            <p class="navItem">Popular</p>
+        </a>
+
+        <div class="vol flex j-center a-center">
+            <i class="fa-solid volIcon fa-volume-high"></i>
+            <input type="range" value="30" class="volume">
+        </div>
+    </nav>
+    
+    <main class="flex a-center j-center">
+        <div class="container varela flex j-center">
+            
+            <div class="list flex f-col j-spacear a-center">
+                <h2>Music Library:</h2>
+                <div class="songItem song1 playing flex a-center">
+                    <img src="assets/Music/song1.png" alt="" srcset="">
+                    <p>Holding ON : By VITOVI</p>
+
+                    <button class="play play1">Play</button>
+                </div>
+                <div class="songItem song2 flex a-center">
+                    <img src="assets/Music/Indecisive.jpg" alt="" srcset="">
+                    <p>Indecisive : By T & Sugah</p>
+
+                    <button class="play play2">Play</button>
+                </div>
+                <div class="songItem song3 flex a-center">
+                    <img src="assets/Music/Paper Walls.jpg" alt="" srcset="">
+                    <p>Paper Walls : By Mykyl, Riggs, Elliot Kings</p>
+                    
+                    <button class="play play3">Play</button>
+                </div>
+                <div class="songItem song4 flex a-center">
+                    <img src="assets/Music/8rounds.jpg" alt="" srcset="">
+                    <p>8 Rounds : By Zaug</p>
+                    
+                    <button class="play play4">Play</button>
+                </div>
+                <div class="songItem song5 flex a-center">
+                    <img src="assets/Music/Hawaii Vacation by TVARI.jpg" alt="" srcset="">
+                    <p>Hawaii Vacation : By TVARI</p>
+                    
+                    <button class="play play5">Play</button>
+                </div>
+                <div class="songItem song6 flex a-center">
+                    <img src="assets/Music/keepMovingOn.jpg" alt="" srcset="">
+                    <p>Keep Moving On : By VITOVI</p>
+                    
+                    <button class="play play6">Play</button>
+                </div>
+            </div>
+
+        </div>
+        
+    </main>
+    
+    <div class="bottom varela flex f-col j-center a-center">
+        
+        <img src="assets/BlueEqualizer.gif" class="gif gif1" alt="">
+        <div class="stuff flex f-col j-center a-center">
+            <h4 id="songName">Holding ON : By VITOVI</h4>
+            <div class="progress flex j-center a-center">
+                <p id="durat" class="info">0m 0.0s</p><input type="range" value="0" class="prog"><p id="time" class="info"></p>
+            </div>
+            <div class="controls flex j-center a-center">
+                <i class="fa-solid fa-backward-step"></i>
+                <i class="fa-solid fa-play" id="masterPlay"></i> 
+                <i class="fa-solid fa-forward-step"></i>
+            </div>
+        </div>
+        <img src="assets/BlueEqualizer.gif" class="gif gif2" alt="">
+        
+    </div>
+    
+
+    <script src="https://kit.fontawesome.com/1a8fc386bc.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

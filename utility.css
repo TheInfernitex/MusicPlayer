@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Open+Sans:wght@800&family=Quicksand&family=Tektur:wght@500&family=Varela+Round&display=swap');
+
+.varela{
+    font-family: 'Varela Round', sans-serif;
+}
+
+.flex{display: flex;}
+.j-center{justify-content: center;}
+.j-spacear{justify-content: space-around;}
+.a-center{align-items: center;}
+.f-col{flex-direction: column;}
+.rel{position: relative;}
+.abs{position:absolute;}
+
+
+.btn{
+    cursor: pointer;
+}
+
+.active{
+    opacity:1 !important;
+    pointer-events: all !important;
+}
+
+.playing{
+    background-color: rgba(255,255,255,0.5);
+    transition: 0.2s ease-in;
+}
