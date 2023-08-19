@@ -88,6 +88,7 @@ masterPlay.addEventListener('click',()=>{
     if(currentSong.duration > 0 && !currentSong.paused) pauseIt();
     else 
     {
+        volIcon.classList.add("fa-beat-fade");
         gif[0].style.visibility="visible";
         gif[1].style.visibility="visible";
         masterPlay.classList.remove("fa-play");masterPlay.classList.add("fa-pause");
@@ -124,7 +125,7 @@ function playIt()
         gif[1].style.visibility="hidden";
         masterPlay.classList.remove("fa-pause");masterPlay.classList.add("fa-play");
         volIcon.classList.remove("fa-beat-fade");
-    },durations[currentSongNo]);
+    },durations[currentSongNo]-currentSong.currentTime);
     
 } 
 
@@ -155,4 +156,4 @@ volume.addEventListener('change',()=>{
         volIcon.classList.remove("fa-volume-low");
         volIcon.classList.add("fa-volume-high");
     }
-})
+});
