@@ -8,7 +8,6 @@ const time=document.querySelector("#time");
 const backward=document.querySelector(".fa-backward-step");
 const forward=document.querySelector(".fa-forward-step");
 
-
 let progressBar=document.querySelector(".prog");
 progressBar.max=100;
 
@@ -36,7 +35,18 @@ setInterval(()=>{
     let m=parseInt(currentSong.currentTime/60);
     durat.innerHTML=m+"m "+s+"s";
     progressBar.value=((100*currentSong.currentTime)/currentSong.duration);
+
+    if(durat.innerHTML==time.innerHTML)
+    {
+        listItems[currentSongNo].classList.remove("playing");
+        currentSongNo++;
+        if(currentSongNo>6)currentSongNo=1;
+        listItems[currentSongNo].classList.add("playing");
+        playIt();
+    }
 },100);
+
+
 
 forward.addEventListener('click',()=>{
     let songNo;
@@ -101,19 +111,12 @@ masterPlay.addEventListener('click',()=>{
         gif[1].style.visibility="visible";
         masterPlay.classList.remove("fa-play");masterPlay.classList.add("fa-pause");
         currentSong.play();
-        setInterval(()=>{
-        currentSong.pause();
-        gif[0].style.visibility="hidden";
-        gif[1].style.visibility="hidden";
-        masterPlay.classList.remove("fa-pause");masterPlay.classList.add
-        ("fa-play");
-        playBtns[currentSongNo].innerHTML="Play";
-    },(durations[currentSongNo]-currentSong.currentTime));
     }
 });
 
 function pauseIt()
 {
+    masterPlay.classList.add("fa-play");masterPlay.classList.remove("fa-pause");
     playBtns[currentSongNo].innerHTML="Play";
     currentSong.pause();
     volIcon.classList.remove("fa-beat-fade");
@@ -124,6 +127,7 @@ function pauseIt()
 }
 function playIt()
 {
+    masterPlay.classList.remove("fa-play");masterPlay.classList.add("fa-pause");
     playBtns[currentSongNo].innerHTML="Stop";
     Name.innerHTML=""+songNames[currentSongNo].innerHTML;
     volIcon.classList.add("fa-beat-fade");
@@ -132,14 +136,6 @@ function playIt()
     gif[1].style.visibility="visible";
     masterPlay.classList.remove("fa-play");masterPlay.classList.add("fa-pause");
     currentSong.play();
-    setInterval(()=>{
-        currentSong.pause();
-        gif[0].style.visibility="hidden";
-        gif[1].style.visibility="hidden";
-        masterPlay.classList.remove("fa-pause");masterPlay.classList.add("fa-play");
-        volIcon.classList.remove("fa-beat-fade");
-        playBtns[currentSongNo].innerHTML="Play";
-    },durations[currentSongNo]-currentSong.currentTime);
     
 } 
 
