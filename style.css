@@ -5,9 +5,9 @@ body{
     height:100%;width:100%;
     background: linear-gradient(90deg,#031b1c,#0B666A,#031b1c);
 }
-a{
-    text-decoration:none;
-    color: rgb(203, 253, 255);
+
+nav .logo{
+    margin-right: 1%;
 }
 nav{
     height:10vh;
@@ -15,9 +15,6 @@ nav{
     background: linear-gradient(90deg,#031b1c,#0B666A,#031b1c);
     color:rgb(203, 253, 255);
     position: relative;
-}
-.navItem{
-    width:max-content;
 }
 .vol{
     position: absolute;
@@ -37,7 +34,7 @@ nav{
 .gif1{
     position: absolute;
     left:0.5%;
-    transition: 0.5s ease-in;
+    transition: 0.2s ease-in;
     margin:auto 0 auto 0;
     height:8vh;
     border-radius: 20%;
@@ -48,7 +45,7 @@ nav{
 .gif2{
     position: absolute;
     right:0.5%;
-    transition: 0.5s ease-in;
+    transition: 0.2s ease-in;
     margin:auto 0 auto 0;
     height:8vh;
     border-radius: 20%;
@@ -105,7 +102,9 @@ main{
 }
 
 
-
+h2{
+    font-weight: bolder !important;
+}
 .songItem{
     height:5vh;
     width:90%;
@@ -217,6 +216,9 @@ h4{
     .gif{
         visibility: hidden !important;
     }
+    ul{
+        visibility: hidden !important;
+    }
 }
 @media screen and (max-width:803px)
 {
@@ -224,40 +226,25 @@ h4{
         top:60%;
         font-size:smaller;
     }
-    .volIcon{
-        font-size: smaller;
-    }
     .volume{
         
         width:50% ;
     }
 }
 @media screen and (max-width:700px) {
-    nav{
-        font-size: small;
-    }
     
-    .volIcon{
-        font-size: smaller;
-    }
     .navItem,h3{
         margin: 0 1.4% 0 0 !important;
-    }
-    nav .logo{
-        margin-right: 2%;
     }
 }
 @media screen and (max-width:600px)
 {
-    nav .logo{
-        margin-right: 2%;
+    .volIcon{
+        font-size: small;
     }
     
     nav{
-        font-size: smaller !important;
-    }
-    .volIcon{
-        font-size: small !important;
+        font-size: small;
     }
     .info{
         font-size: smaller;
@@ -277,7 +264,7 @@ h4{
         font-size: x-small;
     }
     nav{
-        font-size: x-small !important;
+        font-size: smaller !important;
     }
     nav input[type=range]::-webkit-slider-thumb {
         height:1px !important;
@@ -297,12 +284,6 @@ h4{
     #songName{
         font-size: 0;
     }
-    nav{
-        font-size: x-small !important;
-    }
-    .navItem{
-        visibility: hidden;
-    }
     
     .container img{
         width:0;
@@ -317,14 +298,17 @@ h4{
         font-size: xx-small !important;
     }
 }
-@media screen and (max-width:305px)
+@media screen and (max-width:348px)
 {
+    nav .logo{
+        font-size: smaller !important;
+    }
     .info
     {
         font-size: xx-small !important;
     }
     nav{
-        font-size: xx-small !important;
+        font-size: x-small !important;
     }
     .container{
         font-size: x-small !important;
