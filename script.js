@@ -9,11 +9,10 @@ const backward=document.querySelector(".fa-backward-step");
 const forward=document.querySelector(".fa-forward-step");
 
 
-
 let progressBar=document.querySelector(".prog");
 progressBar.max=100;
 
-let volume=document.querySelector(".volume");
+let volume=document.querySelector(".vol .volume");
 volume.max=100;
 
 let listItems=[];
@@ -27,15 +26,16 @@ let songNames=[];
 for(let i=1;i<=6;i++) songNames[i]=document.querySelector(".song"+i+" p");
 
 let durations=[0,236000,214000,166000,122000,183000,238000];
-let durationsMin=["0","3m 56.0s","3m 34.0s","2m 46.0s","2m 02.0s","3m 04.0s","3m 58.0s"];
+let durationsMin=["0","3m 56s","3m 34s","2m 46s","2m 02s","3m 04s","3m 58s"];
 
 let Name=document.querySelector("#songName");
 
+
 setInterval(()=>{
-    let s=(currentSong.currentTime%60).toFixed(1);
-    let m=(s/60).toFixed(0);
+    let s=parseInt(currentSong.currentTime%60);
+    let m=parseInt(currentSong.currentTime/60);
     durat.innerHTML=m+"m "+s+"s";
-    progressBar.value=((100*currentSong.currentTime)/currentSong.duration.toFixed(5));
+    progressBar.value=((100*currentSong.currentTime)/currentSong.duration);
 },100);
 
 forward.addEventListener('click',()=>{
@@ -68,26 +68,34 @@ backward.addEventListener('click',()=>{
 
 for(let i=1;i<=6;i++)
 playBtns[i].addEventListener('click',()=>{
-    listItems[currentSongNo].classList.remove("playing");
-    listItems[i].classList.add("playing");
-    time.innerHTML=""+durationsMin[i];
-    if((currentSong.duration > 0 && !currentSong.paused))pauseIt();
-
-    currentSongNo=i;
-    Name.innerHTML=""+songNames[i].innerHTML;
-    playIt();
+    if(i==currentSongNo && currentSong.duration > 0 && !currentSong.paused)
+    {
+        listItems[currentSongNo].classList.remove("playing");
+        pauseIt();
+    }
+    else{
+        listItems[currentSongNo].classList.remove("playing");
+        listItems[i].classList.add("playing");
+        time.innerHTML=""+durationsMin[i];
+        if((currentSong.duration > 0 && !currentSong.paused))pauseIt();
+        currentSongNo=i;
+        playIt();
+    }
 
 });
 
 progressBar.addEventListener('change',()=>{
-    currentSong.currentTime=(progressBar.value*currentSong.duration/100);
+    currentSong.currentTime=((progressBar.value*currentSong.duration)/100);
 });
-
+progressBar.addEventListener('input',()=>{
+    currentSong.currentTime=((progressBar.value*currentSong.duration)/100);
+});
 
 masterPlay.addEventListener('click',()=>{
     if(currentSong.duration > 0 && !currentSong.paused) pauseIt();
     else 
     {
+        playBtns[currentSongNo].innerHTML="Stop";
         volIcon.classList.add("fa-beat-fade");
         gif[0].style.visibility="visible";
         gif[1].style.visibility="visible";
@@ -97,13 +105,16 @@ masterPlay.addEventListener('click',()=>{
         currentSong.pause();
         gif[0].style.visibility="hidden";
         gif[1].style.visibility="hidden";
-        masterPlay.classList.remove("fa-pause");masterPlay.classList.add("fa-play");
+        masterPlay.classList.remove("fa-pause");masterPlay.classList.add
+        ("fa-play");
+        playBtns[currentSongNo].innerHTML="Play";
     },(durations[currentSongNo]-currentSong.currentTime));
     }
 });
 
 function pauseIt()
 {
+    playBtns[currentSongNo].innerHTML="Play";
     currentSong.pause();
     volIcon.classList.remove("fa-beat-fade");
     masterPlay.classList.remove("fa-pause");
@@ -113,6 +124,8 @@ function pauseIt()
 }
 function playIt()
 {
+    playBtns[currentSongNo].innerHTML="Stop";
+    Name.innerHTML=""+songNames[currentSongNo].innerHTML;
     volIcon.classList.add("fa-beat-fade");
     currentSong=new Audio("assets/Music/song"+currentSongNo+".mp3");
     gif[0].style.visibility="visible";
@@ -125,17 +138,15 @@ function playIt()
         gif[1].style.visibility="hidden";
         masterPlay.classList.remove("fa-pause");masterPlay.classList.add("fa-play");
         volIcon.classList.remove("fa-beat-fade");
+        playBtns[currentSongNo].innerHTML="Play";
     },durations[currentSongNo]-currentSong.currentTime);
     
 } 
 
-setInterval(()=>{
-    console.log(currentSong.volume);
-},1000);
 
 volume.addEventListener('change',()=>{
-    currentSong.volume=(volume.value/100).toFixed(2);
-    if(currentSong.volume==0.00)
+    currentSong.volume=(volume.value/100).toFixed(3);
+    if(currentSong.volume==0)
     {
         volIcon.classList.remove("fa-volume-high");
         volIcon.classList.remove("fa-volume-low");
