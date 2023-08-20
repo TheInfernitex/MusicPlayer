@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Open+Sans:wght@800&family=Quicksand&family=Tektur:wght@500&family=Varela+Round&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,700&display=swap');
+
 .varela{
     font-family: 'Varela Round', sans-serif;
+}
+.lara{
+    font-family: 'Lora', serif !important;
 }
 
 .flex{display: flex;}
