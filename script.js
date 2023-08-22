@@ -80,8 +80,18 @@ for(let i=1;i<=6;i++)
 playBtns[i].addEventListener('click',()=>{
     if(i==currentSongNo && currentSong.duration > 0 && !currentSong.paused)
     {
-        listItems[currentSongNo].classList.remove("playing");
         pauseIt();
+    }
+    else if(i==currentSongNo)
+    {
+        listItems[currentSongNo].classList.remove("playing");
+        listItems[i].classList.add("playing");
+        playBtns[currentSongNo].innerHTML="Pause";
+        volIcon.classList.add("fa-beat-fade");
+        gif[0].style.visibility="visible";
+        gif[1].style.visibility="visible";
+        masterPlay.classList.remove("fa-play");masterPlay.classList.add("fa-pause");
+        currentSong.play();
     }
     else{
         listItems[currentSongNo].classList.remove("playing");
@@ -105,7 +115,7 @@ masterPlay.addEventListener('click',()=>{
     if(currentSong.duration > 0 && !currentSong.paused) pauseIt();
     else 
     {
-        playBtns[currentSongNo].innerHTML="Stop";
+        playBtns[currentSongNo].innerHTML="Pause";
         volIcon.classList.add("fa-beat-fade");
         gif[0].style.visibility="visible";
         gif[1].style.visibility="visible";
@@ -128,7 +138,7 @@ function pauseIt()
 function playIt()
 {
     masterPlay.classList.remove("fa-play");masterPlay.classList.add("fa-pause");
-    playBtns[currentSongNo].innerHTML="Stop";
+    playBtns[currentSongNo].innerHTML="Pause";
     Name.innerHTML=""+songNames[currentSongNo].innerHTML;
     volIcon.classList.add("fa-beat-fade");
     currentSong=new Audio("assets/Music/song"+currentSongNo+".mp3");
