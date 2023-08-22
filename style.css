@@ -231,10 +231,13 @@ h4{
         width:50% ;
     }
 }
-@media screen and (max-width:700px) {
+@media screen and (max-width:720px) {
     
     .navItem,h3{
         margin: 0 1.4% 0 0 !important;
+    }
+    .info{
+        font-size: smaller !important;
     }
 }
 @media screen and (max-width:600px)
@@ -246,8 +249,8 @@ h4{
     nav{
         font-size: small;
     }
-    .info{
-        font-size: smaller;
+    .prog{
+        width:70% !important;
     }
     .container{
         font-size: small !important;
@@ -269,6 +272,9 @@ h4{
     nav input[type=range]::-webkit-slider-thumb {
         height:1px !important;
     }
+    .prog{
+        width:60% !important;
+    }
     nav input[type=range] {
         height:7px !important;
     }
@@ -276,10 +282,11 @@ h4{
         font-size: x-small !important;
     }
 }
-@media screen and (max-width:415px)
+@media screen and (max-width:448px)
 {
-    .info{
-        font-size: x-small !important;
+    
+    .prog{
+        width:50% !important;
     }
     #songName{
         font-size: 0;
@@ -305,7 +312,7 @@ h4{
     }
     .info
     {
-        font-size: xx-small !important;
+        font-size: x-small !important;
     }
     nav{
         font-size: x-small !important;
